@@ -81,22 +81,89 @@ When a program contains more that one statement, the statements are executed fro
 ## Conditional Execution
 Not all programs are lineair. We can also make branching roads within the program. this is where If statements come in place.
 
-## While and Do Loops
+A block is a group of statements within `{}`
+You can combine if and else statements to execute different statements if a value is true or false. You can chain statements by using else if. 
 
+## While and Do Loops
+Run a piece of code for multiple times is called a 'loop'.
+the While statement can be used to execute a certain function untill the value hits 'false'
+
+`while (number <= 12) {
+  console.log(number);
+  number = number + 2;
+}
+// → 0
+// → 2
+//   … etcetera
+`
+
+Do loops are almost the same as while loops. Except a do loop will always execute it's body statements 1 time. After that it checks if the statement needs to be ran anymore.
+
+`let yourName;
+do {
+  yourName = prompt("Who are you?");
+} while (!yourName);
+console.log(yourName);
 ## Indenting Code
+`
+## Indenting Code
+Indenting code is important for the readability op your program. Indent blocks within blocks to show the level of te blocks in your code.
 
 ## For Loops
 
+`for (let number = '7"; number.length <= #; number = number + "#") {
+  console.log(number);
+}
+`
+
+Above piece of code is an example of the 'for-loop'
+parentheses after the keyword for needs to contain atleast 2 semicolons. the first semicolon inititializes the loop. The second expression checks if the loop needs to be executed or if it has reached the given limit.
+
+`let result = 1;
+for (let counter = 0; counter < 10; counter = counter + 1) {
+  result = result * 2;
+}
+console.log(result);`
+
 ## Breaking out of a Loop
+Having a false condition is not the only way to break out of a loop.
+The break statement jumps out of the given loop.
+
+`for (let current = 20; ; current = current + 1) {
+  if (current % 7 == 0) {
+    console.log(current);
+    break;
+  }
+}`
+
+the counterpart of break is continue. the statement does just that, it start the iteration back in a loop again.
 
 ## Updating Bindings Succinctly
+`counter = counter + 1;`
+
+Can be written as
+
+`counter += 1;`
+
+This is handy to shorten your code
 
 ## Dispatching on a value with switch
+Switch code is a bit like if code. However it works with cases rather then statements. It is vert sensitive to break statements within it's cases. Or else it might run something completely different.
+
+Also a default expression is mandatory in a switch case!
 
 ## Capitzalization
 
-## Comments
+`fuzzylittleturtle
+fuzzy_little_turtle
+FuzzyLittleTurtle
+fuzzyLittleTurtle`
 
+multiple ways to write bindings. It is important to be consistent. So other people can easy read and understand your written code.
+
+## Comments
+To write a single line comment we can use two slash characters `//`
+To write a block comment we can use `/*` ended by `*/`
 
 
 
