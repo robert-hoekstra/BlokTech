@@ -104,8 +104,8 @@ do {
   yourName = prompt("Who are you?");
 } while (!yourName);
 console.log(yourName);
-## Indenting Code
 `
+
 ## Indenting Code
 Indenting code is important for the readability op your program. Indent blocks within blocks to show the level of te blocks in your code.
 
