@@ -1,4 +1,4 @@
-let boardSize = 16;
+let boardSize = 8;
 let boardColor = "";
 
 for (let y = 0; y < boardSize; y += 1){
