@@ -10,8 +10,11 @@ We can define an array by using brackets. And every value is seperated by commas
 
 An array starts at 0 instead of 1.
 Also calling a specific value out of the array can be done like `listOfLetters[0]`
+Above is also called zero based counting.
 
 ## Properties
+
+
 ## Methods
 ## Objects
 ## Mutability
