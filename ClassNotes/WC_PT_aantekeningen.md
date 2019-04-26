@@ -27,7 +27,7 @@ Op basis van heftigste levenservaring
 Op basis van Sport
 Op basis van vermogen <- Jaarcijfers, salaris, kapitaal
 
-##Wie is je doelgroep
+## Wie is je doelgroep
 	Mensen tussen de 18 en 70 die heel vermogend zijn.
 	Mensen tussen de 18 en 70 die een vermogende partner zoeken (golddigger.nl)
 	Mensen ouder dan 18 met een eigen auto en rijbewijs
@@ -49,10 +49,17 @@ Op basis van vermogen <- Jaarcijfers, salaris, kapitaal
 
 ## Job Story
 
-	When I am going to gym I want to meet dating canditates so I can work towards a fine relationship
+	When I am going to the gym I want to meet other gym members that are within the same area so I can work towards a serious relationship
 	When I am working out I want to meet people that also work out so I can workout together with people that are working out.
 	When I am working out at the gym I want to meet other people without interupting my workout So I can keep on working out.
 	When I am attending a gym class I want to attend it with fit people so I can date them after the workout
+	When I am planning my workouts I want to find potential partners to workout with so I can have a date while doing something we both like.
+	When I am in an online dating environment I want to easily find potential candidates so I can spend more time working out.
+	When I am going to workout I want to meet people with a similar schedule so I can meet new people and workout together.
+
+	When I am going to meet new people I want to update my profile so I can show others when I am available to workout.
+	When I am searching for gympartners I want to describe what kind of lifter I am so other people can match with my profile.
+
 
 
 
