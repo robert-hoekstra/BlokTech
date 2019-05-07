@@ -56,7 +56,6 @@ Op basis van vermogen <- Jaarcijfers, salaris, kapitaal
 	When I am planning my workouts I want to find potential partners to workout with so I can have a date while doing something we both like.
 	When I am in an online dating environment I want to easily find potential candidates so I can spend more time working out.
 	When I am going to workout I want to meet people with a similar schedule so I can meet new people and workout together.
-
 	When I am going to meet new people I want to update my profile so I can show others when I am available to workout.
 	When I am searching for gympartners I want to describe what kind of lifter I am so other people can match with my profile.
 
