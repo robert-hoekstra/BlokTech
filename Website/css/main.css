@@ -101,6 +101,47 @@ textarea {
  /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
+html {
+    background: white;
+}
+
+body * {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 1em;
+}
+
+article > h1, h2, h3, h4, h5, h6{
+    color: rgb(255, 206, 44);
+    font-family: 'Raleway', sans-serif;
+}
+
+article > h1{
+    font-size: 2em;
+}
+
+article > h2{
+    font-size: 1.8em;
+}
+
+article > h3{
+    font-size: 1.6em;
+}
+
+article > h4{
+    font-size: 1.4em;
+}
+
+article > h5{
+    font-size: 1.2em;
+}
+
+article > h6{
+    font-size: 1em;
+}
+
+
 body{
     background-color: rgb(59, 59, 59);
     min-width: 67%;
@@ -110,57 +151,12 @@ body{
     padding: 1em;
 
 }
-header{
-    color: white;
-    display: inline-grid;
-    grid-template-columns: repeat(4, 1fr);
-    width: 100%;
-}
-
-header form{
-    background-color: white;
-    width: 100%;
-}
-
-header form input{
-}
-
-header nav{
-    grid-column-start: 1;
-    grid-column-end: 4;
-}
-
-header nav ul{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-}
-header nav ul li{
-    flex-grow: 1;
-    font-size: 1.5em;
-    padding: 1em;
-}
-
-
-header nav ul li a{
-    color: white;
-}
-
-header nav ul li a:hover{
-    color: red;
-}
-
-header section{
-    grid-column-start: 4;
-    grid-column-end: 4;
-}
 
 ul{
     list-style: none;
 }
 
 article{
-    background-color: white;
     padding-left: 1em;
     padding-right: 1em;
 }
@@ -182,14 +178,93 @@ article img{
     background-color: white;
 }
 
-html {
-    background: white;
+form{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+@media screen and (min-width: 60em) {
+    /* STYLES HERE */
+    body{
+        background-color: blue;
+    }
+    nav ul{
+        display: grid;
+        justify-items: center;
+        text-align: center;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      header{
+          display: grid;
+          grid-template-columns: 80% 20%;
+      }
+
+}
+
+@media screen and (min-width: 40em) and (max-width: 60em) { 
+    /* STYLES HERE */
+
+    body{
+        background-color: green;
+    }
+    .preview-leden{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+    }
+    
+    .preview-leden article{
+        border: solid black 2px;
+        background-color: white;
+    }
+
+    nav ul{
+        display: grid;
+        justify-items: center;
+        text-align: center;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: flex-start;
+      }
+
+      header{
+        display: grid;
+        grid-template-columns: 80% 20%;
+    }
+}
+
+@media screen and (max-width: 40em) {
+    /* STYLES HERE */
+    .preview-leden{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+    }
+    
+    .preview-leden article{
+        border: solid black 2px;
+        background-color:white;
+    }
+
+    nav > ul {
+        font-size: 1.6em;
+        min-height: 50px;
+        padding: 1rem 4rem;
+      }
+  
+      nav ul {
+        display: grid;
+        justify-items: center;
+        text-align: center;
+      }
+
+      header{
+        display: grid;
+        grid-template-columns: 80% 20%;
+    }
 }
 
 
-article > h1, h2, h3, h4, h5, h6{
-    color: black;
-}
+
 
 
 
