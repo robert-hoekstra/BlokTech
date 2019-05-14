@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "calendar-scheduler": "^0.1.2",
+    "express": "^4.16.4",
+    "handlebars": "^4.1.2",
     "moment": "^2.24.0"
   },
   "devDependencies": {},
