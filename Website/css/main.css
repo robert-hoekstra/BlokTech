@@ -181,7 +181,41 @@ article img{
 form{
     display: grid;
     grid-template-columns: 1fr;
+    max-width: 50%;
+    margin: auto;
+    margin-top: 25%;
+    margin-bottom: 25%;
 }
+
+form input{
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+footer{
+    display: grid;
+    margin: auto;
+}
+
+section h2 {
+    text-align: center;
+    
+}
+
+section {
+
+}
+
+section.main-block{
+    width: 70%;
+    margin: auto;
+    min-height: 50vh;
+    border: solid 2px black;
+    border-radius: 8%;
+    background-color: gray;
+}
+
 @media screen and (min-width: 60em) {
     /* STYLES HERE */
     body{
@@ -191,13 +225,12 @@ form{
         display: grid;
         justify-items: center;
         text-align: center;
-        grid-template-columns: 1fr 1fr 1fr;
       }
 
       header{
-          display: grid;
-          grid-template-columns: 80% 20%;
-      }
+        display: grid;
+        margin: auto;
+    }
 
 }
 
@@ -222,13 +255,11 @@ form{
         display: grid;
         justify-items: center;
         text-align: center;
-        grid-template-columns: 1fr 1fr 1fr;
-        justify-items: flex-start;
       }
 
       header{
         display: grid;
-        grid-template-columns: 80% 20%;
+        margin: auto;
     }
 }
 
@@ -259,7 +290,7 @@ form{
 
       header{
         display: grid;
-        grid-template-columns: 80% 20%;
+        margin: auto;
     }
 }
 
