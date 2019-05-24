@@ -1,9 +1,3 @@
-// server.js
-
-// server.js
-
-// index page 
-
 // load the things we need
 var express = require('express');
 var app = express();
@@ -47,6 +41,16 @@ app.get('/register', function(req, res) {
 // profile page 
 app.get('/profile', function(req, res) {
     res.render('pages/profile');
+});
+
+// 404
+app.get('/profile', function(req, res) {
+    res.render('pages/404');
+});
+
+// Information page 
+app.get('/information', function(req, res) {
+    res.render('pages/information');
 });
 
 app.listen(8080);
