@@ -11,7 +11,7 @@ The feature is based on the job stories described in the WIKI of this repo. The 
 The member can choose between two BMI values in which the system will try to match the member with other members that are withing the given margins.
 
 ## How does it work
-All the files are included in the subfolder within this repo. The subfolder is called 'testserver'. Clone the folder to a directory on your local machine. Make sure Node.JS is installed and NPM as well. Open up the terminal and run 'npm install' followed by 'node server.js' after the npm command is finished installing all the required packages declared in the .JSON file.
+All the files are included in the subfolder within this repo. The subfolder is called 'testserver'. Clone the folder to a directory on your local machine. Make sure Node.JS [How to install node](https://nodejs.org/en/download/package-manager/) is installed and NPM [How to install npm](https://www.npmjs.com/get-npm) as well. Open up the terminal and run '```npm install```' followed by 'node server.js' after the npm command is finished installing all the required packages declared in the .JSON file.
 
 The application can now we approached on the given localhost port in any browser. I advice to use Google Chrome for the best experience.
 
