@@ -98,7 +98,9 @@ app.get('/information', function(req, res) {
 app.get('/profile/:id', function(req, res){
     Member.findById(req.params.id, function(err, members){
         console.log(members);
-        return;
+        res.render('pages/uniqueprofile', {
+            members: members
+        })
     })
 })
 
