@@ -12,13 +12,30 @@
 </header>
 
 <main>
-<div class="row">
-    <div class="col-sm-8">    
-        <div class="jumbotron">
-            <h1>This is great</h1>
-            <p>Welcome to templating using EJS</p>
+    <div class="row">
+        <div class="col-sm-8">    
+            <div class="jumbotron">
+                <h1>List of Members
+                </h1>
+                <p>
+                   <section class="member-oveview">
+                       <% members.forEach(function (members) { %>
+                        <ul>
+                        <li>User name: <%= members.username %></li>
+                        <li>First Name: <%= members.firstName %></li>
+                        <li>Last Name: <%= members.lastName %></li>
+                        <li>Age: <%= members.age %></li>
+                        <li>Gender: <%= members.gender %></li>
+                        <li><a href="/profile/<%= members._id %>">Check Profile</a></li>
+                    </ul>
+                    <% }) %>
+                </section>
+                    
+                </p>
+            </div>
         </div>
-    </div>
+
+
 
     <div class="col-sm-4">        
         <div class="well">

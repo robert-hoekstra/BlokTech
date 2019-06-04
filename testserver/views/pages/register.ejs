@@ -11,6 +11,7 @@
     <% include ../partials/header %>
 </header>
 
+
 <main>
 <div class="row">
     <div class="col-sm-8">    
@@ -22,13 +23,30 @@
 
     <div class="col-sm-4">        
         <div class="well">
-            <h3>Look I'm A Sidebar!</h3>
-        </div>
-    </div>
-
-    <div class="col-sm-4">        
-        <div class="well">
-            <h3>Look I'm A Sidebar!</h3>
+            <h3>Register now!</h3>
+            <form method="POST", action="/register">
+                <div id="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control", name="username">
+                </div>
+                <div id="form-group">
+                        <label>First Name<label>
+                        <input type="text" class="form-control", name="firstName">
+                    </div>
+                <div id="form-group">
+                        <label>Last Name<label>
+                        <input type="text" class="form-control", name="lastName">
+                </div>
+                <div id="form-group">
+                        <label>Age<label>
+                        <input type="text" class="form-control", name="age">
+                </div>
+                <div id="form-group">
+                        <label>Gender<label>
+                        <input type="text" class="form-control", name="gender">
+                </div>
+                <input class="btn" class="btn-primary" type="submit" value="submit">
+            </form>
         </div>
     </div>
 

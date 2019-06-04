@@ -1,11 +1,43 @@
-// load the things we need
+// load Express
 var express = require('express');
+
+// load body-parser]
+const bodyParser = require('body-parser')
+
+
+// Init App 
 var app = express();
+
+// set DB structure
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/lcw1');
+let db = mongoose.connection;
+
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
-// use res.render to load up an ejs view file
+
+// Check for DB connection
+db.once('open', function(){
+    console.log('Connected to MongoDB');
+
+});
+//Check for Db errors
+db.on('error', function(){
+    console.log(err);
+});
+
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
+//Bring in Models
+let Member = require('./models/member.js')
 
 // index page 
 app.get('/', function(req, res) {
@@ -21,7 +53,6 @@ app.get('/', function(req, res) {
         tagline: tagline
     });
 });
-
 
 // about page 
 app.get('/about', function(req, res) {
@@ -40,7 +71,17 @@ app.get('/register', function(req, res) {
 
 // profile page 
 app.get('/profile', function(req, res) {
-    res.render('pages/profile');
+    Member.find({}, function(err, members){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('pages/profile', {
+                members: members,
+                title: members.title
+
+            });
+        }
+    });
 });
 
 // 404
@@ -52,6 +93,36 @@ app.get('/profile', function(req, res) {
 app.get('/information', function(req, res) {
     res.render('pages/information');
 });
+
+// Unique Member Page
+app.get('/profile/:id', function(req, res){
+    Member.findById(req.params.id, function(err, members){
+        console.log(members);
+        return;
+    })
+})
+
+// add registering profile to db
+app.post('/register', function(req, res){
+    console.log('Submitted');
+    let member = new Member();
+    member.username = req.body.username;
+    member.firstName = req.body.firstName;
+    member.lastName = req.body.lastName;
+    member.age = req.body.age;
+    member.gender = req.body.gender;
+
+    member.save(function(err){
+        if(err){
+            console.log(err);
+            return;
+        } else {
+            res.redirect('/');
+        }
+    })
+    console.log(req.body.title);
+})
+// Start Server on port 8080
 
 app.listen(8080);
 console.log('8080 is the magic port');
