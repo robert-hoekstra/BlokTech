@@ -1,12 +1,11 @@
 // load Express
-var express = require('express');
+const express = require('express');
 
 // load body-parser]
-const bodyParser = require('body-parser')
-
+const bodyParser = require('body-parser');
 
 // Init App 
-var app = express();
+const app = express();
 
 // set DB structure
 const mongoose = require('mongoose');
@@ -14,10 +13,8 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/lcw1');
 let db = mongoose.connection;
 
-
 // set the view engine to ejs
 app.set('view engine', 'ejs');
-
 
 // Check for DB connection
 db.once('open', function(){
@@ -29,29 +26,18 @@ db.on('error', function(){
     console.log(err);
 });
 
-
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
-
 // parse application/json
 app.use(bodyParser.json())
+app.use(express.static('static'))
 
 //Bring in Models
 let Member = require('./models/member.js')
 
 // index page 
 app.get('/', function(req, res) {
-    var drinks = [
-        { name: 'Bloody Mary', drunkness: 3 },
-        { name: 'Martini', drunkness: 5 },
-        { name: 'Scotch', drunkness: 10 }
-    ];
-    var tagline = "Any code of your own that you haven't looked at for six or more months might as well have been written by someone else.";
-
-    res.render('pages/index', {
-        drinks: drinks,
-        tagline: tagline
-    });
+    res.render('pages/index');
 });
 
 // about page 
@@ -84,10 +70,6 @@ app.get('/profile', function(req, res) {
     });
 });
 
-// 404
-app.get('/profile', function(req, res) {
-    res.render('pages/404');
-});
 
 // Information page 
 app.get('/information', function(req, res) {
@@ -102,7 +84,51 @@ app.get('/profile/:id', function(req, res){
             members: members
         })
     })
+}) 
+
+//Load Edit Form
+app.get('/profile/edit-profile/:id', function(req, res){
+    Member.findById(req.params.id, function(err, members){
+        console.log(members);
+        res.render('pages/edit-profile', {
+            members: members
+        })
+    })
 })
+
+// Update Profile
+app.post('/profile/edit-profile/:id', function(req, res){
+    console.log('Edit Form Submitted');
+    let member = {};
+    member.username = req.body.username;
+    member.firstName = req.body.firstName;
+    member.lastName = req.body.lastName;
+    member.age = req.body.age;
+    member.gender = req.body.gender;
+
+    let query = {_id:req.params.id}
+
+    Member.update(query, member, function(err){
+        if(err){
+            console.log(err);
+            return;
+        } else {
+            res.redirect('/');
+        }
+    })
+    console.log(req.body.title);
+})
+
+// Delete profile
+app.get('/profile/delete/:id', function (req, res) {
+    let query = { _id: req.params.id };
+    Member.remove(query, function (err) {
+        if(err){
+            console.log(err)
+        }
+      res.redirect('/');
+    });
+  });
 
 // add registering profile to db
 app.post('/register', function(req, res){
@@ -124,6 +150,13 @@ app.post('/register', function(req, res){
     })
     console.log(req.body.title);
 })
+
+
+//The 404 Route (ALWAYS Keep this as the last route)
+app.get('*', function(req, res){
+    res.status(404);
+    res.render('pages/404');
+  });
 // Start Server on port 8080
 
 app.listen(8080);

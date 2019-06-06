@@ -1,0 +1,29 @@
+<%= include ../partials/top %>
+
+<main>
+        <h3>Edit</h3>
+        <form method="POST", action="/profile/edit-profile/<%= members._id %>">
+            <div id="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control", name="username" value="<%= members.username %>">
+            </div>
+            <div id="form-group">
+                    <label>First Name<label>
+                    <input type="text" class="form-control", name="firstName" value="<%= members.firsName %>">
+                </div>
+            <div id="form-group">
+                    <label>Last Name<label>
+                    <input type="text" class="form-control", name="lastName" value="<%= members.lastName %>">
+            </div>
+            <div id="form-group">
+                    <label>Age<label>
+                    <input type="text" class="form-control", name="age" value="<%= members.age %>">
+            </div>
+            <div id="form-group">
+                    <label>Gender<label>
+                    <input type="text" class="form-control", name="gender" value="<%= members.gender %>">
+            </div>
+            <input class="btn" class="btn-primary" type="submit" value="submit">
+        </form>
+</main>
+<%= include ../partials/bottom %>

@@ -1,31 +1,14 @@
-<!-- views/pages/about.ejs -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <% include ../partials/head %>
-</head>
-<body class="container">
-
-<header>
-    <% include ../partials/header %>
-</header>
+<%= include ../partials/top %>
 
 <main>
     <div class="row">
         <div class="col-sm-8">    
             <div class="jumbotron">
-                    <section class="member-oveview">
-                     </section>
+                    <li><a class="btn" class="btn-default" href="/profile/edit-profile/<%= members._id %>">Edit Profile</a></li>
+                    <li><a class="btn" class="btn-default" href="/profile/delete/<%= members._id %>">Delete Profile</a></li>
             </div>
         </div>
 
 </div>
 </main>
-
-<footer>
-    <% include ../partials/footer %>
-</footer>
-
-</body>
-</html>
+<%= include ../partials/bottom %>

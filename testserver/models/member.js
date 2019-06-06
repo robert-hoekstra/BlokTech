@@ -1,7 +1,7 @@
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 // Member Schema
-let memberSchema = mongoose.Schema({
+const memberSchema = mongoose.Schema({
     username: {
         type: String,
         required: true
@@ -26,4 +26,4 @@ let memberSchema = mongoose.Schema({
 }
 )
 
-let Member = module.exports = mongoose.model('Member', memberSchema);
+const Member = module.exports = mongoose.model('Member', memberSchema);
