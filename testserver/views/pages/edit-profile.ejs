@@ -9,7 +9,7 @@
             </div>
             <div id="form-group">
                     <label>First Name<label>
-                    <input type="text" class="form-control", name="firstName" value="<%= members.firsName %>">
+                    <input type="text" class="form-control", name="firstName" value="<%= members.firstName %>">
                 </div>
             <div id="form-group">
                     <label>Last Name<label>
@@ -23,6 +23,14 @@
                     <label>Gender<label>
                     <input type="text" class="form-control", name="gender" value="<%= members.gender %>">
             </div>
+            <div id="form-group">
+                        <label>Height<label>
+                        <input type="number" class="form-control", name="height" value="<%= members.height %>">
+                     </div>
+                     <div id="form-group">
+                        <label>Weight<label>
+                        <input type="number" class="form-control", name="weight" value="<%= members.weight %>">
+                    </div>
             <input class="btn" class="btn-primary" type="submit" value="submit">
         </form>
 </main>
