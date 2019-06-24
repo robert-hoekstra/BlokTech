@@ -1,6 +1,6 @@
 // load Express
 const express = require('express');
-
+const port = process.env.PORT || 8080;
 // Init App 
 const app = express();
 // set DB structure
@@ -10,15 +10,31 @@ const passport = require('passport');
 // load body-parser
 const bodyParser = require('body-parser');
 const config = require('./config/database')
+require("dotenv").config();
 
-mongoose.connect(config.database);
+mongoose.connect(
+    "mongodb+srv://" +
+      process.env.DB_USERNAME +
+      ":" +
+      process.env.DB_PASSWORD +
+      "@" +
+      process.env.DB_SERVER +
+      "/" +
+      process.env.DB_NAME +
+      "?retry?Writes=true",
+    { useNewUrlParser: true }
+    );
+
 let db = mongoose.connection;
+
+console.log(db)
+
 // Check for DB connection
 db
 .once('open', function(){
     console.log('Connected to MongoDB');
 })
-.on('error', function(){
+.on('error', function(err){
     console.log(err);
 });
 
@@ -81,5 +97,5 @@ app.get('*', function(req, res){
   });
 // Start Server on port 8080
 
-app.listen(8080);
-console.log('Speak 8080 and enter.');
+app.listen(port);
+console.log('Now listening on port: ' + port);
