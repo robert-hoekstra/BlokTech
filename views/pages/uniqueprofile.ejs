@@ -1,0 +1,33 @@
+<%= include ../partials/top %>
+
+<main>
+    <div class="row">
+        <div class="col-sm-8">    
+            <div class="jumbotron">
+                    <p>
+                    <section class="list-group">
+                    <li class="list-group-item active"><%= users.username %></li>
+                    <li class="list-group-item">Your Body Mass Index (BMI): <%= (users.weight / (users.height * users.height )*10000).toFixed(1)  %></li>
+                    
+                    </section>
+                            <section class="list-group">
+                                 <ul class="list-group">
+                                 <li class="list-group-item">First Name: <%= users.firstName %></li>
+                                 <li class="list-group-item">Last Name: <%= users.lastName %></li>
+                                 <li class="list-group-item">Age: <%= users.age %></li>
+                                 <li class="list-group-item">Gender: <%= users.gender %></li>
+                                 <li class="list-group-item">Height: <%= users.height %></li>
+                                 <li class="list-group-item">Weight: <%= users.weight %></li>
+                             </ul>
+                         </section>
+                             
+                         </p>
+                    <a class="btn btn-default" href="/profile/edit-profile/<%= users._id %>">Edit Profile</a>
+                    <a class="btn btn-danger delete-user" href='#' data-id="<%= users._id %>">Delete your ajax profile </a>
+
+            </div>
+        </div>
+
+</div>
+</main>
+<%= include ../partials/bottom %>
