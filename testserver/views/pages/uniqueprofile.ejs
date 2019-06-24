@@ -7,19 +7,22 @@
                     <p>
                             <section class="list-group">
                                  <ul class="list-group">
-                                 <li class="list-group-item">User name: <%= members.username %></li>
-                                 <li class="list-group-item">First Name: <%= members.firstName %></li>
-                                 <li class="list-group-item">Last Name: <%= members.lastName %></li>
-                                 <li class="list-group-item">Age: <%= members.age %></li>
-                                 <li class="list-group-item">Gender: <%= members.gender %></li>
-                                 <li class="list-group-item">Height: <%= members.height %></li>
-                                 <li class="list-group-item">Weight: <%= members.weight %></li>
+                                 <li class="list-group-item">User name: <%= users.username %></li>
+                                 <li class="list-group-item">First Name: <%= users.firstName %></li>
+                                 <li class="list-group-item">Last Name: <%= users.lastName %></li>
+                                 <li class="list-group-item">Age: <%= users.age %></li>
+                                 <li class="list-group-item">Gender: <%= users.gender %></li>
+                                 <li class="list-group-item">Height: <%= users.height %></li>
+                                 <li class="list-group-item">Weight: <%= users.weight %></li>
                              </ul>
                          </section>
                              
                          </p>
-                    <li><a class="btn" class="btn-default" href="/profile/edit-profile/<%= members._id %>">Edit Profile</a></li>
-                    <li><a class="btn" class="btn-default" href="/profile/delete/<%= members._id %>">Delete Profile</a></li>
+                         <div class="row">
+                    <li><a class="btn btn-default" href="/profile/edit-profile/<%= users._id %>">Edit Profile</a></li>
+                    <li><a class="btn btn-danger delete-user" href='#' data-id="<%= users._id %>">Delete your ajax profile </a></li>
+                    </div>
+
             </div>
         </div>
 

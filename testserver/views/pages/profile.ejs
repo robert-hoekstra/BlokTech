@@ -1,31 +1,26 @@
 
 <%= include ../partials/top %>
 <main>
-    <div class="row">
-        <div class="col-sm-8">    
+    <div class="">  
             <div class="jumbotron">
                 <h1>List of Members
                 </h1>
-                <p>
-                   <section class="member-oveview">
-                       <% members.forEach(function (members) { %>
+                  <p>
+                   <section class="users-oveview">
+                       <% users.forEach(function (users) { %>
                         <ul>
-                        <li class="list-group-item active"><%= members.username %></li>
-                        <li class="list-group-item">First Name: <%= members.firstName %></li>
-                        <li class="list-group-item">Last Name: <%= members.lastName %></li>
-                        <li class="list-group-item">Age: <%= members.age %></li>
-                        <li class="list-group-item">Gender: <%= members.gender %></li>
-                        <li class="list-group-item">Height: <%= members.height %></li>
-                        <li class="list-group-item">Weight: <%= members.weight %></li>
-                        <li class="list-group-item"><a href="/profile/<%= members._id %>">Check Profile</a></li>
+                        <li class="list-group-item active"><%= users.username %></li>
+                        <li class="list-group-item">First Name: <%= users.firstName %></li>
+                        <li class="list-group-item">Last Name: <%= users.lastName %></li>
+                        <li class="list-group-item">Age: <%= users.age %></li>
+                        <li class="list-group-item">Gender: <%= users.gender %></li>
+                        <li class="list-group-item">Height: <%= users.height %></li>
+                        <li class="list-group-item">Weight: <%= users.weight %></li>
+                        <li class="list-group-item"><a href="/profile/<%= users._id %>">Check Profile</a></li>
                     </ul>
                     <% }) %>
-                </section>
-                    
+                </section> 
                 </p>
             </div>
-        </div>
-            <% include ../partials/register-form %>
-</div>
 </main>
 <%= include ../partials/bottom %>

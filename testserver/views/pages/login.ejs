@@ -1,0 +1,30 @@
+<%= include ../partials/top %>
+<main>
+<div class="row">
+    <div class="col-sm-8">    
+        <div class="jumbotron">
+            <h1>This is great</h1>
+            <p>Welcome to templating using EJS</p>
+        </div>
+    </div>
+
+    <div class="col-sm-4">        
+        <div class="well">
+            <h3>Log in!</h3>
+            <form method="POST", action="/users/login">
+                <div id="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control", name="username">
+                </div>
+                <div id="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control", name="password">
+                </div>
+                <input class="btn" class="btn-primary" type="submit" value="submit">
+            </form>
+        </div>
+    </div>
+
+</div>
+</main>
+<%= include ../partials/bottom %>

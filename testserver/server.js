@@ -1,14 +1,12 @@
 // load Express
 const express = require('express');
-// load body-parser]
+// load body-parser
 const bodyParser = require('body-parser');
 // Init App 
 const app = express();
 // set DB structure
 const mongoose = require('mongoose');
-const expressValidator = require('express-validator');
-const sessions = require('express-session');
-
+const session = require('express-session');
 
 mongoose.connect('mongodb://localhost:27017/lcw1');
 let db = mongoose.connection;
@@ -31,110 +29,44 @@ app.use(bodyParser.json())
 app.use(express.static('static'))
 
 // Express Session Middelware
-app.use(sessions({
+app.use(session({
     secret: 'keyboard cat',
     resave: true,
     saveUninitialized: true,
-}))
+    cookie: { secure: true }
+}));
+
 
 
 //Bring in Models
 let Member = require('./models/member.js')
+let User = require('./models/users.js')
 
 // Routes
 // index page (home) 
 app.get('/', function(req, res) {
     res.render('pages/index');
 });
-// about page 
-app.get('/about', function(req, res) {
-    res.render('pages/about');
-});
-// contact page 
-app.get('/contact', function(req, res) {
-    res.render('pages/contact');
-});
+
+
 // register page 
 app.get('/register', function(req, res) {
     res.render('pages/register');
 });
-// profile page 
-app.get('/profile', function(req, res) {
-    Member.find({}, function(err, members){
-        if(err){
-            console.log(err);
-        } else {
-            res.render('pages/profile', {
-                members: members,
-                title: members.title
 
-            });
-        }
-    });
-});
-// Information page 
-app.get('/information', function(req, res) {
-    res.render('pages/information');
-});
-// Unique Member Page
-app.get('/profile/:id', function(req, res){
-    Member.findById(req.params.id, function(err, members){
-        console.log(members);
-        res.render('pages/uniqueprofile', {
-            members: members
-        })
-    })
-}) 
-//Load Edit Form
-app.get('/profile/edit-profile/:id', function(req, res){
-    Member.findById(req.params.id, function(err, members){
-        console.log(members);
-        res.render('pages/edit-profile', {
-            members: members
-        })
-    })
-})
-// Update Profile
-app.post('/profile/edit-profile/:id', function(req, res){
-    console.log('Edit Form Submitted');
-    let member = {};
-    member.username = req.body.username;
-    member.firstName = req.body.firstName;
-    member.lastName = req.body.lastName;
-    member.age = req.body.age;
-    member.gender = req.body.gender;
-    member.height = req.body.height;
-    member.weight = req.body.weight;
+// Route Files
+let profiles = require('./routes/profiles');
+let users = require('./routes/users');
+app.use('/users', users);
+app.use('/profile', profiles);
 
-    let query = {_id:req.params.id}
-
-    Member.update(query, member, function(err){
-        if(err){
-            console.log(err);
-            return;
-        } else {
-            res.redirect('/');
-        }
-    })
-    console.log(req.body.title);
-})
-
-// Delete profile
-app.get('/profile/delete/:id', function (req, res) {
-    let query = { _id: req.params.id };
-    Member.remove(query, function (err) {
-        if(err){
-            console.log(err)
-        }
-      res.redirect('/');
-    });
-  });
 
 // add registering profile to db
 app.post('/register', function(req, res){
     console.log('Submitted');
     let member = new Member();
     member.username = req.body.username;
+    member.password = req.body.password;
     member.firstName = req.body.firstName;
     member.lastName = req.body.lastName;
     member.age = req.body.age;
@@ -162,4 +94,4 @@ app.get('*', function(req, res){
 // Start Server on port 8080
 
 app.listen(8080);
-console.log('8080 is the magic port');
+console.log('Speak 8080 and enter.');
