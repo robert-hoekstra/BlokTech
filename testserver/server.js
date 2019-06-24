@@ -9,7 +9,9 @@ const session = require('express-session');
 const passport = require('passport');
 // load body-parser
 const bodyParser = require('body-parser');
-const config = require('./config/database')
+const config = require('./config/database');
+const path = require('path');
+
 require("dotenv").config();
 
 mongoose.connect(
@@ -39,13 +41,15 @@ db
 });
 
 // set the view engine to ejs
+
+app.set('views', __dirname + '/views/pages');
 app.set('view engine', 'ejs');
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 // Set Static Folder to Public
-app.use(express.static('static'))
+app.use(express.static(path.join(__dirname, 'static')));
 
 // Express Session Middelware
 app.use(session({
@@ -74,13 +78,13 @@ app.get('*', function(req, res, next){
 // Routes
 // index page (home) 
 app.get('/', function(req, res) {
-    res.render('pages/index');
+    res.render('index');
 });
 
 
 // register page 
 app.get('/register', function(req, res) {
-    res.render('pages/register');
+    res.render('register');
 });
 
 // Route Files
@@ -93,7 +97,7 @@ app.use('/profile', profiles);
 //The 404 Route (ALWAYS Keep this as the last route)
 app.get('*', function(req, res){
     res.status(404);
-    res.render('pages/404');
+    res.render('404');
   });
 // Start Server on port 8080
 

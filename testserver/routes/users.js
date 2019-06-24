@@ -9,7 +9,7 @@ let User = require('../models/users');
 
 // Register Form
 router.get('/register', function(req, res){
-    res.render('pages/register2');
+    res.render('register2');
 })
 
 // Register Process
@@ -45,7 +45,7 @@ router.post('/register2', function(req, res){
     });
 // Login Form
 router.get('/login', function(req, res){
-    res.render('pages/login');
+    res.render('login');
 })
 
 // Login Process

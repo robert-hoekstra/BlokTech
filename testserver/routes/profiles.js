@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
         if(err){
             console.log(err);
         } else {
-            res.render('pages/profile', {
+            res.render('profile', {
                 members: members,
                 title: members.title
 
@@ -28,7 +28,7 @@ router.get('/', function(req, res) {
         if(err){
             console.log(err);
         } else {
-            res.render('pages/profile', {
+            res.render('profile', {
                 users: users,
                 title: users.title
             });
@@ -40,7 +40,7 @@ router.get('/', function(req, res) {
 router.get('/:id', function(req, res){
     User.findById(req.params.id, function(err, users){
         console.log(users);
-        res.render('pages/uniqueprofile', {
+        res.render('uniqueprofile', {
             users: users
         })
     })
@@ -49,7 +49,7 @@ router.get('/:id', function(req, res){
 router.get('/edit-profile/:id', function(req, res){
     User.findById(req.params.id, function(err, users){
         console.log(users);
-        res.render('pages/edit-profile', {
+        res.render('edit-profile', {
             users: users
         })
     })
