@@ -73,7 +73,6 @@ app.get('*', function(req, res, next){
 });
 
 
-// let Users = require('./models/users.js')
 
 // Routes
 // index page (home) 
@@ -81,13 +80,7 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
-
-// register page 
-app.get('/register', function(req, res) {
-    res.render('register');
-});
-
-// Route Files
+// Route Files Catch everything on given route.
 let profiles = require('./routes/profiles');
 let users = require('./routes/users');
 app.use('/users', users);
