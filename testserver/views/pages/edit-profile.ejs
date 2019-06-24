@@ -1,15 +1,12 @@
 <%= include ../partials/top %>
 
 <main>
-        <h3>Edit</h3>
+
         <form class="well" method="POST", action="/profile/edit-profile/<%= users._id %>">
+                <h3>Currently Editing account >  <%= users.username%></h3>
             <div id="form-group">
                 <label>Username</label>
-                <input type="text" class="form-control", name="username" value="<%= users.username %>">
-            </div>
-            <div id="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control", name="password" value="<%= users.password %>">
+                <input type="text" class="form-control", name="username" value="<%= users.username %>" readonly>
             </div>
             <div id="form-group">
                     <label>First Name<label>
@@ -21,18 +18,18 @@
             </div>
             <div id="form-group">
                     <label>Age<label>
-                    <input type="text" class="form-control", name="age" value="<%= users.age %>">
+                    <input type="number" class="form-control", name="age" value="<%= users.age %>">
             </div>
             <div id="form-group">
                     <label>Gender<label>
                     <input type="text" class="form-control", name="gender" value="<%= users.gender %>">
             </div>
             <div id="form-group">
-                        <label>Height<label>
+                        <label>Height (in CM)<label>
                         <input type="number" class="form-control", name="height" value="<%= users.height %>">
                 </div>
                 <div id="form-group">
-                        <label>Weight<label>
+                        <label>Weight (in KG)<label>
                         <input type="number" class="form-control", name="weight" value="<%= users.weight %>">
                 </div>
             <input class="btn" class="btn-primary" type="submit" value="submit">

@@ -1,14 +1,17 @@
 // load Express
 const express = require('express');
-// load body-parser
-const bodyParser = require('body-parser');
+
 // Init App 
 const app = express();
 // set DB structure
 const mongoose = require('mongoose');
 const session = require('express-session');
+const passport = require('passport');
+// load body-parser
+const bodyParser = require('body-parser');
+const config = require('./config/database')
 
-mongoose.connect('mongodb://localhost:27017/lcw1');
+mongoose.connect(config.database);
 let db = mongoose.connection;
 // Check for DB connection
 db
@@ -33,14 +36,24 @@ app.use(session({
     secret: 'keyboard cat',
     resave: true,
     saveUninitialized: true,
-    cookie: { secure: true }
+    cookie: { secure: false }
 }));
 
+// Passport Config
+require('./config/passport')(passport);
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('*', function(req, res, next){
+    res.locals.user = req.user || null;
+    console.log(res.locals.user);
+    console.log(req.session.passport);
+    next();
+});
 
 
-//Bring in Models
-let Member = require('./models/member.js')
-let User = require('./models/users.js')
+// let Users = require('./models/users.js')
 
 // Routes
 // index page (home) 
@@ -59,31 +72,6 @@ let profiles = require('./routes/profiles');
 let users = require('./routes/users');
 app.use('/users', users);
 app.use('/profile', profiles);
-
-
-// add registering profile to db
-app.post('/register', function(req, res){
-    console.log('Submitted');
-    let member = new Member();
-    member.username = req.body.username;
-    member.password = req.body.password;
-    member.firstName = req.body.firstName;
-    member.lastName = req.body.lastName;
-    member.age = req.body.age;
-    member.gender = req.body.gender;
-    member.height = req.body.height;
-    member.weight = req.body.weight;
-
-    member.save(function(err){
-        if(err){
-            console.log(err);
-            return;
-        } else {
-            res.redirect('/');
-        }
-    })
-    console.log(req.body.title);
-})
 
 
 //The 404 Route (ALWAYS Keep this as the last route)

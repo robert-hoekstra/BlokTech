@@ -3,7 +3,6 @@ const router = express.Router();
 
 
 //Bring in Members Module
-let Member = require('../models/member.js');
 let User = require('../models/users.js');
 
 /*
@@ -80,17 +79,6 @@ router.post('/edit-profile/:id', function(req, res){
     })
     console.log(req.body.title);
 })
-
-// Delete profile
-router.get('/delete/:id', function (req, res) {
-    let query = { _id: req.params.id };
-    User.remove(query, function (err) {
-        if(err){
-            console.log(err)
-        }
-      res.redirect('/');
-    });
-  });
 
 // Delete profile using AJAX 
 router.delete('/:id', function(req, res){
