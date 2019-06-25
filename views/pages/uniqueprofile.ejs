@@ -5,9 +5,11 @@
         <div class="col-sm-8">    
             <div class="jumbotron">
                     <p>
+                    <img class="profilepicture" src="https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80">
                     <section class="list-group">
                     <li class="list-group-item active"><%= users.username %></li>
                     <li class="list-group-item">Your Body Mass Index (BMI): <%= (users.weight / (users.height * users.height )*10000).toFixed(1)  %></li>
+
                     
                     </section>
                             <section class="list-group">
@@ -23,7 +25,7 @@
                              
                          </p>
                     <a class="btn btn-default" href="/profile/edit-profile/<%= users._id %>">Edit Profile</a>
-                    <a class="btn btn-danger delete-user" href='#' data-id="<%= users._id %>">Delete your ajax profile </a>
+                    <a class="btn btn-danger delete-user" href='#' data-id="<%= users._id %>">Delete your LCW profile </a>
 
             </div>
         </div>

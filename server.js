@@ -3,17 +3,22 @@ const express = require('express');
 const port = process.env.PORT || 8080;
 // Init App 
 const app = express();
-// set DB structure
+// Init Dependencies
 const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
-// load body-parser
 const bodyParser = require('body-parser');
 const config = require('./config/database');
+//Init Relative Path variable
 const path = require('path');
+// Passport Config
+require('./config/passport')(passport)
+// Route Files Catch everything on given route.
+let profiles = require('./routes/profiles');
+let users = require('./routes/users')
 
 require("dotenv").config();
-
+// Connect to online DB
 mongoose.connect(
     "mongodb+srv://" +
       process.env.DB_USERNAME +
@@ -28,9 +33,6 @@ mongoose.connect(
     );
 
 let db = mongoose.connection;
-
-console.log(db)
-
 // Check for DB connection
 db
 .once('open', function(){
@@ -40,59 +42,55 @@ db
     console.log(err);
 });
 
+app
+.set('views', __dirname + '/views/pages')
+.set('view engine', 'ejs')
 // set the view engine to ejs
-
-app.set('views', __dirname + '/views/pages');
-app.set('view engine', 'ejs');
+.set('views', __dirname + '/views/pages')
+.set('view engine', 'ejs')
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
-app.use(bodyParser.json())
+.use(bodyParser.json())
 // Set Static Folder to Public
-app.use(express.static(path.join(__dirname, 'static')));
+.use(express.static(path.join(__dirname, 'static')))
 
 // Express Session Middelware
-app.use(session({
+.use(session({
     secret: 'keyboard cat',
     resave: true,
     saveUninitialized: true,
     cookie: { secure: false }
-}));
+}))
 
-// Passport Config
-require('./config/passport')(passport);
+
 // Passport Middleware
-app.use(passport.initialize());
-app.use(passport.session());
+.use(passport.initialize())
+.use(passport.session())
 
-app.get('*', function(req, res, next){
+// Routes
+// index page (home) 
+.get('/', function(req, res) {
+    res.render('index');
+})
+
+.get('*', function(req, res, next){
     res.locals.user = req.user || null;
     console.log(res.locals.user);
     console.log(req.session.passport);
     next();
-});
+})
 
-
-
-// Routes
-// index page (home) 
-app.get('/', function(req, res) {
-    res.render('index');
-});
-
-// Route Files Catch everything on given route.
-let profiles = require('./routes/profiles');
-let users = require('./routes/users');
-app.use('/users', users);
-app.use('/profile', profiles);
-
+// Set routes to required files
+.use('/users', users)
+.use('/profile', profiles)
 
 //The 404 Route (ALWAYS Keep this as the last route)
-app.get('*', function(req, res){
+.get('*', function(req, res){
     res.status(404);
     res.render('404');
-  });
-// Start Server on port 8080
+  })
 
-app.listen(port);
+// Start Server on port 8080
+.listen(port);
 console.log('Now listening on port: ' + port);
