@@ -1,16 +1,16 @@
 # Feature for gymmembers dating online
 
 ## Reproduce
-*Register an account
-*Login
-*Go to Profile
-*Check Profile
-*Edit Profile
-*Fill in Details
-*BMI is now updated!
-*Go back to profilelist
-*Click Delete LCW account
-*Account is now deleted from Database
+* Register an account
+* Login
+* Go to Profile
+* Check Profile
+* Edit Profile
+* Fill in Details
+* BMI is now updated!
+* Go back to profilelist
+* Click Delete LCW account
+* Account is now deleted from Database
 
 ## ToC
 - [Context](#context)
