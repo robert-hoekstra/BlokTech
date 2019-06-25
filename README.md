@@ -1,17 +1,5 @@
 # Feature for gymmembers dating online
 
-## Reproduce
-* Register an account
-* Login
-* Go to Profile
-* Check Profile
-* Edit Profile
-* Fill in Details
-* BMI is now updated!
-* Go back to profilelist
-* Click Delete LCW account
-* Account is now deleted from Database
-
 ## ToC
 - [Context](#context)
 - [The dating App](#the-dating-app)
@@ -21,6 +9,7 @@
   * [Live version HEROKU](#live-version-heroku)
   * [Database Mongo Atlas](#database-mongo-atlas)
 - [Security](#security)
+- [Reproduce](#reproduce)
 - [More Information](#more-information)
 
 
@@ -35,7 +24,7 @@ The idea of the app is an online dating application made for gymmembers. Gymmemb
 The feature is based on the job stories described in the WIKI of this repo. The feature that I want to create is a feature in where gymmember add their length and weight. The server calculates the BMI of a member and adds it to the profile.
 The member can choose between two BMI values in which the system will try to match the member with other members that are withing the given margins.
 
-Update: BMI values cant yet be choosen. However the BMI value itself is based upon the enterred values when one updates its account!
+Update: BMI values cant yet be choosen. However the BMI value itself is based upon the enterred values when one updates its account! The values are calculated and written to the html document trough templating with EJS.
 ![Profile with BMI](https://i.imgur.com/PkwjFQ9.jpg)
 
 ## How does it work
@@ -54,6 +43,18 @@ Both the local and live version use a cloud based database run by Mongo Atlas. T
 To maintain some form of security we use Passport.JS, Sessions combined with bcryptjs.
 When creating an account, the password entry gets hashed and stored in the database. There is no way for a moderator to locate or view your real password.
 ![Register](https://i.imgur.com/z8qIYVO.jpg)
+
+## Reproduce
+* Register an account
+* Login
+* Go to Profile
+* Check Profile
+* Edit Profile
+* Fill in Details
+* BMI is now updated!
+* Go back to profilelist
+* Click Delete LCW account
+* Account is now deleted from Database
 
 When logging in, the hashed password gets compared to your real password. If there is a match you will enter a logged in state of the application by using a session. Logout to get clear of the session.
 ![Login](https://i.imgur.com/bWPQHzM.jpg)
