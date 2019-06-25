@@ -3,8 +3,6 @@ const express = require("express");
 let User = require("../models/users.js");
 const router = express.Router();
 
-
-
 // profile page Users
 router.get("/", function(req, res) {
   User.find({}, function(err, users) {
@@ -75,6 +73,5 @@ router.delete("/:id", function(req, res) {
     res.status(200).send("Account removed from database");
   });
 });
-
 
 module.exports = router;
